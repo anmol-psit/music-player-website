@@ -1,7 +1,7 @@
 const songs = [
-  { title: "Song 1", file: "songs/song1.mp3", cover: "images/cover1.jpg", artist: "Artist 1" },
-  { title: "Saiyaara", file: "songs/song2.mp3", cover: "images/cover2.jpg", artist: "Anmol" },
-  { title: "Song 3", file: "songs/song3.mp3", cover: "images/cover3.jpg", artist: "Artist 3" }
+  { title: "Song 1", file: "song1.mp3", cover: "images/cover1.jpg", artist: "Artist 1" },
+  { title: "Saiyaara", file: "song2.mp3", cover: "images/cover2.jpg", artist: "Anmol" },
+  { title: "Song 3", file: "song3.mp3", cover: "images/cover3.jpg", artist: "Artist 3" }
 ];
 
 
@@ -92,5 +92,6 @@ audio.addEventListener("ended", nextSong);
 
 // Initialize
 loadSong(songs[songIndex]);
+
 
 
