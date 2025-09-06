@@ -4,7 +4,6 @@ const songs = [
   { title: "Song 3", file: "song3.mp3", cover: "images/cover3.jpg", artist: "Artist 3" }
 ];
 
-
 const audio = document.getElementById("audio");
 const cover = document.getElementById("cover");
 const title = document.getElementById("title");
@@ -92,6 +91,8 @@ audio.addEventListener("ended", nextSong);
 
 // Initialize
 loadSong(songs[songIndex]);
+
+
 
 
 
