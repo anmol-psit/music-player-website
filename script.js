@@ -1,8 +1,9 @@
 const songs = [
-  { title: "Aarambh hai prachand", file: "song1.mp3", cover: "images/cover1.jpg", artist: "Piyush Mishra" },
-  { title: "Saiyaara", file: "song2.mp3", cover: "images/cover2.jpg", artist: "Anyone" },
-  { title: "Jeena Isi Ka Naam", file: "song3.mp3", cover: "images/cover3.jpg", artist: "Kishore Kumar" }
+  { title: "Song 1", file: "songs/song1.mp3", cover: "images/cover1.jpg", artist: "Artist 1" },
+  { title: "Saiyaara", file: "songs/song2.mp3", cover: "images/cover2.jpg", artist: "Anmol" },
+  { title: "Song 3", file: "songs/song3.mp3", cover: "images/cover3.jpg", artist: "Artist 3" }
 ];
+
 
 const audio = document.getElementById("audio");
 const cover = document.getElementById("cover");
@@ -91,4 +92,5 @@ audio.addEventListener("ended", nextSong);
 
 // Initialize
 loadSong(songs[songIndex]);
+
 
