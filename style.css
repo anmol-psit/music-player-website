@@ -65,8 +65,11 @@ header {
 
 body {
   font-family: 'Poppins', sans-serif;
+body {
   background: url("images/background.jpg") no-repeat center center fixed;
   background-size: cover;
+}
+
   color: #fff;
   display: flex;
   justify-content: center;
@@ -126,3 +129,4 @@ body {
   justify-content: space-between;
   font-size: 14px;
 }
+
