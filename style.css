@@ -1,91 +1,156 @@
-/* Home Page Styles */
+/* 🌟 Global Styles */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
 body {
   font-family: 'Poppins', sans-serif;
   background: url("images/background.jpg") no-repeat center center fixed;
   background-size: cover;
   color: #fff;
-  margin: 0;
+  line-height: 1.6;
+}
+
+/* 🔥 Overlay for hero section */
+.overlay {
+  position: absolute;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: rgba(0, 0, 0, 0.5);
+  z-index: 0;
+}
+
+/* 🎵 Hero Section */
+.hero {
+  height: 100vh;
   display: flex;
-  flex-direction: column;
+  justify-content: center;
   align-items: center;
-}
-
-header {
   text-align: center;
-  padding: 50px 20px;
+  position: relative;
 }
 
-.home-buttons {
-  text-align: center;
-  margin: 20px 0;
+.hero-text {
+  z-index: 1;
+  max-width: 800px;
+  padding: 20px;
 }
 
-.home-buttons .btn {
+.hero-text h1 {
+  font-size: 3rem;
+  font-weight: 800;
+}
+
+.hero-text h1 span {
+  color: #ffeb3b;
+}
+
+.hero-text p {
+  margin: 15px 0;
+  font-size: 1.2rem;
+  opacity: 0.9;
+}
+
+.hero-buttons {
+  margin-top: 20px;
+}
+
+.btn {
+  padding: 12px 25px;
+  margin: 10px;
+  border-radius: 8px;
+  text-decoration: none;
+  font-weight: 600;
+  transition: all 0.3s ease;
+}
+
+.btn.primary {
   background: #ffeb3b;
   color: #000;
-  padding: 15px 25px;
-  margin: 10px;
-  text-decoration: none;
-  border-radius: 10px;
-  font-weight: bold;
-  transition: transform 0.2s ease;
-}
-.home-buttons .btn:hover {
-  transform: scale(1.1);
-  background: #ffc107;
 }
 
+.btn.primary:hover {
+  background: #ffc107;
+  transform: scale(1.05);
+}
+
+.btn.secondary {
+  border: 2px solid #ffeb3b;
+  color: #ffeb3b;
+  background: transparent;
+}
+
+.btn.secondary:hover {
+  background: #ffeb3b;
+  color: #000;
+  transform: scale(1.05);
+}
+
+/* 🌟 Featured Section */
 .featured {
+  padding: 50px 20px;
   text-align: center;
-  margin-top: 40px;
+  background: rgba(0, 0, 0, 0.6);
+}
+
+.featured h2 {
+  font-size: 2rem;
+  margin-bottom: 30px;
+  color: #ffeb3b;
 }
 
 .song-cards {
   display: flex;
   justify-content: center;
-  gap: 20px;
+  gap: 25px;
   flex-wrap: wrap;
 }
 
 .card {
-  background: rgba(0,0,0,0.4);
+  background: rgba(255, 255, 255, 0.1);
   border-radius: 15px;
+  width: 200px;
   padding: 15px;
-  width: 150px;
+  cursor: pointer;
   transition: transform 0.3s ease, box-shadow 0.3s ease;
+  backdrop-filter: blur(10px);
 }
-.card img {
+
+.card-img img {
   width: 100%;
-  border-radius: 10px;
+  border-radius: 12px;
 }
+
+.card-info {
+  margin-top: 10px;
+}
+
+.card-info h3 {
+  font-size: 1.1rem;
+  font-weight: 600;
+}
+
+.card-info p {
+  font-size: 0.9rem;
+  opacity: 0.8;
+}
+
 .card:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 10px 20px rgba(255,235,59,0.5);
+  transform: translateY(-8px) scale(1.05);
+  box-shadow: 0 10px 20px rgba(255, 235, 59, 0.5);
 }
 
-body {
-  font-family: 'Poppins', sans-serif;
-body {
-  background: url("images/background.jpg") no-repeat center center fixed;
-  background-size: cover;
-}
-
-  color: #fff;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 100vh;
-  margin: 0;
-}
-
-
+/* 🎧 Player Page */
 .player {
-  background: rgba(0, 0, 0, 0.3);
-  padding: 20px;
+  background: rgba(0, 0, 0, 0.6);
+  padding: 25px;
   border-radius: 20px;
   text-align: center;
-  width: 300px;
-  box-shadow: 0 10px 20px rgba(0,0,0,0.3);
+  width: 320px;
+  margin: 50px auto;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.5);
+  backdrop-filter: blur(12px);
 }
 
 .cover {
@@ -99,9 +164,9 @@ body {
   border: none;
   color: #fff;
   font-size: 30px;
-  margin: 0 10px;
+  margin: 0 12px;
   cursor: pointer;
-  transition: transform 0.2s ease;
+  transition: transform 0.2s ease, color 0.2s ease;
 }
 
 .controls button:hover {
@@ -110,8 +175,8 @@ body {
 }
 
 .progress-container {
-  background: #ddd;
-  height: 5px;
+  background: rgba(255,255,255,0.2);
+  height: 6px;
   border-radius: 5px;
   margin: 15px 0;
   cursor: pointer;
@@ -129,4 +194,29 @@ body {
   justify-content: space-between;
   font-size: 14px;
 }
+
+/* 📱 Responsive */
+@media (max-width: 768px) {
+  .hero-text h1 {
+    font-size: 2rem;
+  }
+  .song-cards {
+    flex-direction: column;
+    align-items: center;
+  }
+  .player {
+    width: 90%;
+  }
+}
+
+/* 🎶 Footer */
+footer {
+  text-align: center;
+  padding: 15px;
+  background: rgba(0,0,0,0.7);
+  font-size: 0.9rem;
+  margin-top: 20px;
+}
+
+
 
