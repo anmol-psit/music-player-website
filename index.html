@@ -1,43 +1,77 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>My New Website</title>
-  <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>My Music World</title>
+  <link rel="stylesheet" href="style.css"/>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;800&display=swap" rel="stylesheet">
 </head>
 <body>
-  <header>
-    <h1>🎵 Welcome to My Music World</h1>
-    <p>Listen to your favorite songs online</p>
+  <!-- Hero Section -->
+  <header class="hero">
+    <div class="overlay"></div>
+    <div class="hero-text">
+      <h1>🎵 Welcome to <span>My Music World</span></h1>
+      <p>Feel the rhythm, live the beats, and enjoy your favorite songs online</p>
+      <div class="hero-buttons">
+        <a href="player.html" class="btn primary">▶ Start Listening</a>
+        <a href="about.html" class="btn secondary">ℹ About Me</a>
+      </div>
+    </div>
   </header>
 
-  <main>
-    <div class="home-buttons">
-      <a href="player.html" class="btn">Open Music Player</a>
-      <a href="about.html" class="btn">About Me</a>
-    </div>
-
-    <section class="featured">
-      <h2>Featured Songs</h2>
-      <div class="song-cards">
-        <div class="card">
-          <img src="images/cover1.jpg" alt="Cover">
-          <h3>Aarambh hai Prachand</h3>
+  <!-- Featured Section -->
+  <section class="featured">
+    <h2>🌟 Featured Tracks</h2>
+    <div class="song-cards">
+      <div class="card" onclick="openPlayer(0)">
+        <div class="card-img">
+          <img src="images/cover1.jpg" alt="Song 1"/>
         </div>
-        <div class="card">
-          <img src="images/cover2.jpg" alt="Song 2">
-          <h3>Saiyaara</h3>
-        </div>
-        <div class="card">
-          <img src="images/cover3.jpg" alt="Song 3">
-          <h3>Jeena isi Ka Naam Hai</h3>
+        <div class="card-info">
+          <h3>Aarambh Hai Prachand</h3>
+          <p>Piyush Mishra</p>
         </div>
       </div>
-    </section>
-  </main>
+
+      <div class="card" onclick="openPlayer(1)">
+        <div class="card-img">
+          <img src="images/cover2.jpg" alt="Song 2"/>
+        </div>
+        <div class="card-info">
+          <h3>Saiyaara</h3>
+          <p>Anyone</p>
+        </div>
+      </div>
+
+      <div class="card" onclick="openPlayer(2)">
+        <div class="card-img">
+          <img src="images/cover3.jpg" alt="Song 3"/>
+        </div>
+        <div class="card-info">
+          <h3>Jeena Isi Ka Naam</h3>
+          <p>Kishore Kumar</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <p>🎧 Made with ❤️ by Anmol Pandey | 2025</p>
+  </footer>
+
+  <script>
+    function openPlayer(index) {
+      localStorage.setItem("songIndex", index);
+      window.location.href = "player.html";
+    }
+  </script>
 </body>
 </html>
+
+
 
 
 
