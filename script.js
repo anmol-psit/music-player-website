@@ -1,7 +1,7 @@
 const songs = [
-  { title: "Aarambh hai Prachand", file: "song1.mp3", cover: "images/cover1.jpg", artist: "Piyush Mishra" },
+  { title: "Aarambh hai prachand", file: "song1.mp3", cover: "images/cover1.jpg", artist: "Piyush Mishra" },
   { title: "Saiyaara", file: "song2.mp3", cover: "images/cover2.jpg", artist: "Anyone" },
-  { title: "Jeena isi Ka Naam Hai", file: "song3.mp3", cover: "images/cover3.jpg", artist: "Kishore Kumar" }
+  { title: "Jeena Isi Ka Naam", file: "song3.mp3", cover: "images/cover3.jpg", artist: "Kishore Kumar" }
 ];
 
 const audio = document.getElementById("audio");
@@ -15,9 +15,15 @@ const progressContainer = document.getElementById("progress-container");
 const progress = document.getElementById("progress");
 const currentTimeEl = document.getElementById("current-time");
 const durationEl = document.getElementById("duration");
+const playlistEl = document.getElementById("playlist");
+const shuffleBtn = document.getElementById("shuffle");
+const repeatBtn = document.getElementById("repeat");
+const volumeSlider = document.getElementById("volume");
 
 let songIndex = 0;
 let isPlaying = false;
+let isShuffle = false;
+let isRepeat = false;
 
 // Load song
 function loadSong(song) {
@@ -25,6 +31,7 @@ function loadSong(song) {
   artist.textContent = song.artist;
   cover.src = song.cover;
   audio.src = `songs/${song.file}`;
+  highlightActiveSong();
 }
 
 // Play song
@@ -56,11 +63,27 @@ prevBtn.addEventListener("click", prevSong);
 
 // Next song
 function nextSong() {
-  songIndex = (songIndex + 1) % songs.length;
+  if (isShuffle) {
+    songIndex = Math.floor(Math.random() * songs.length);
+  } else {
+    songIndex = (songIndex + 1) % songs.length;
+  }
   loadSong(songs[songIndex]);
   playSong();
 }
 nextBtn.addEventListener("click", nextSong);
+
+// Shuffle
+shuffleBtn.addEventListener("click", () => {
+  isShuffle = !isShuffle;
+  shuffleBtn.style.color = isShuffle ? "#ffeb3b" : "#fff";
+});
+
+// Repeat
+repeatBtn.addEventListener("click", () => {
+  isRepeat = !isRepeat;
+  repeatBtn.style.color = isRepeat ? "#ffeb3b" : "#fff";
+});
 
 // Progress bar update
 audio.addEventListener("timeupdate", () => {
@@ -86,11 +109,47 @@ function formatTime(time) {
   return `${minutes}:${seconds}`;
 }
 
-// Auto play next song
-audio.addEventListener("ended", nextSong);
+// Auto play next song or repeat
+audio.addEventListener("ended", () => {
+  if (isRepeat) {
+    playSong();
+  } else {
+    nextSong();
+  }
+});
+
+// Volume control
+volumeSlider.addEventListener("input", () => {
+  audio.volume = volumeSlider.value;
+});
+
+// Playlist rendering
+function renderPlaylist() {
+  playlistEl.innerHTML = "";
+  songs.forEach((song, index) => {
+    const li = document.createElement("li");
+    li.textContent = `${song.title} - ${song.artist}`;
+    li.addEventListener("click", () => {
+      songIndex = index;
+      loadSong(songs[songIndex]);
+      playSong();
+    });
+    playlistEl.appendChild(li);
+  });
+}
+
+// Highlight active song
+function highlightActiveSong() {
+  const items = playlistEl.querySelectorAll("li");
+  items.forEach((item, idx) => {
+    item.classList.toggle("active", idx === songIndex);
+  });
+}
 
 // Initialize
+renderPlaylist();
 loadSong(songs[songIndex]);
+
 
 
 
